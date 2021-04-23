@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 
@@ -27,7 +28,7 @@ namespace Lab4
         //basic constructor
         public Tmas() { }
         //method to check if used index is in bounds
-        bool CheckIndex(int i, int j)
+        public bool CheckIndex(int i, int j)
         {
             if ((i < FA.GetLength(0) && i >= 0) && (j < FA.GetLength(0) && j >= 0))
                 return true;
@@ -133,6 +134,20 @@ namespace Lab4
             }
             // Step 3: return the new array.
             return result;
+        }
+        //finds max element of matrix using Linq
+        public int MaxElem(int[,] arr)
+        {
+            return arr.Cast<int>().Max();
+        }
+        //subtracts b from all elements of the matrix
+        public void MinusB(int b)
+        {
+            int size = FA.GetLength(0);
+            res = new int[size, size];
+            for (int i = 0; i < size; ++i)
+                for (int j = 0; j < size; ++j)
+                    res[i, j] = FA[i, j] - b;
         }
     }
 }
