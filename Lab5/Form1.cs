@@ -45,20 +45,6 @@ namespace Lab5
             catch { }
         }
 
-        private void button_OpenForm2_Click(object sender, EventArgs e)
-        {
-
-            Form2 form2 = new Form2();
-            form2.ShowDialog();
-            //catch (Exception)
-            //{ MessageBox.Show("Input all fields"); }
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            
-        }
-
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
             if (numericUpDown1.Value > 10)
