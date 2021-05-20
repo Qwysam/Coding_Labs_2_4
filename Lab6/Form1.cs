@@ -11,28 +11,37 @@ namespace AnalogClock
 {
     public partial class Form1 : Form
     {
+        public static Color LinearBrush1;
+        public static Color Hour_Dash_Pen;
+        public static Color MinutePen;
+        public static Color SecondPen;
         public Form1()
         {
             InitializeComponent();
+            LinearBrush1 = Color.Green;
+            Hour_Dash_Pen = Color.White;
+            MinutePen = Color.LightGray;
+            SecondPen = Color.Red;
             this.Paint += new PaintEventHandler(drawclock);
             this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
             this.SetStyle(ControlStyles.UserPaint, true);
             this.SetStyle(ControlStyles.DoubleBuffer, true);
+            buttonSettings.BringToFront();
         }
         private void drawclock(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
             Rectangle rec = new Rectangle(20, 20, 250, 250);
-            LinearGradientBrush linearbrush = new LinearGradientBrush(rec, Color.Yellow,
-                                                                      Color.Green, 225);
+            
+            SolidBrush linearbrush = new SolidBrush(LinearBrush1);
             g.FillEllipse(linearbrush, 20, 20, 174, 174);
             SolidBrush solidbrush = new SolidBrush(Color.White);
             Font textFont = new Font("Arial Bold", 12F);
             // Create Pens
-            Pen hourPen = new Pen(Color.White, 2);
-            Pen minutePen = new Pen(Color.LightGray, 2);
-            Pen secondPen = new Pen(Color.Red, 1);
-            Pen dashPen = new Pen(Color.White, 2);
+            Pen hourPen = new Pen(Hour_Dash_Pen, 2);
+            Pen minutePen = new Pen(MinutePen, 2);
+            Pen secondPen = new Pen(SecondPen, 1);
+            Pen dashPen = new Pen(Hour_Dash_Pen, 2);
             double angle = 0;
             for(int i = 0; i < 13; i++)
             {
@@ -80,7 +89,22 @@ namespace AnalogClock
                                        (int)(-70 * Math.Cos(secondAngle)));
             g.DrawLine(secondPen, centre, secHand);
             Invalidate();
+            buttonSettings.BringToFront();
+            buttonSettings.Show();
 
+        }
+
+        private void buttonSettings_Click(object sender, EventArgs e)
+        {
+            Form2 form2 = new Form2();
+            form2.ShowDialog();
+        }
+
+        private void buttonAuthor_Click(object sender, EventArgs e)
+        {
+            Form3 f = new Form3();
+            f.Text = "Автор";
+            f.ShowDialog();
         }
     }
 }
