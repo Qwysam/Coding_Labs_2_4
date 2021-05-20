@@ -88,11 +88,11 @@ namespace AnalogClock
             }
             string user_config = Form1.LinearBrush1.ToArgb().ToString();
             user_config += "\n";
-            user_config = Form1.Hour_Dash_Pen.ToArgb().ToString();
+            user_config += Form1.Hour_Dash_Pen.ToArgb().ToString();
             user_config += "\n";
-            user_config = Form1.MinutePen.ToArgb().ToString();
+            user_config += Form1.MinutePen.ToArgb().ToString();
             user_config += "\n";
-            user_config = Form1.SecondPen.ToArgb().ToString();
+            user_config += Form1.SecondPen.ToArgb().ToString();
             sfd = new SaveFileDialog();
             sfd.DefaultExt = "txt";
             sfd.Filter = "TXT Files|*.txt";
